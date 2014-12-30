@@ -1,0 +1,20 @@
+<html>
+<body>
+<input type="file" id="file" onchange="onInputFileChange()">
+<video id="audio_id" controls autoplay loop>Your browser can't support HTML5 Audio</video>
+<script>
+function onInputFileChange() {
+   var file = document.getElementById('file').files[0];
+   var url = URL.createObjectURL(file);
+
+
+   console.log(url);
+   document.getElementById("audio_id").src = url;
+
+    console.log("url"+url);
+
+   //alter(url);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>demo</title>
+    <link rel="stylesheet" href="pageswitch.css">
+	<style>
+* {
+    -webkit-user-select: none;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+    font: normal 62.5% sans-serif;
+}
+li{list-style: none}
+h2{font-size: 1.8rem;border-bottom: 1px solid black}
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.container{
+  position:absolute;left:0px;top:0px;
+  width:100%;height:100%;overflow:hidden
+}
+.content{
+  position:absolute;left:0;top:0;right:0;bottom:0;
+  width；100%；height:100%；
+}
+.wrap{
+   display:flex;
+   width:100%;
+   height:100%;
+   flex-flow: column nowrap;  
+}
+
+.main{
+	flex-grow:1;
+  overflow:auto;
+}
+.main div{
+	background: #fff;
+	height: 900px;
+}
+
+
+
+.nav{
+  background: lightyellow
+}
+.page1{
+	background: #fff
+}
+.page2{
+  background:lightblue;
+}
+
+
+
+
+.footer{
+  height: 40px;background-color: lightgreen;color:#fff;margin:0px;font-size: 1.0rem
+}
+
+.btn{
+	
+	padding: 0px 12px 0px 12px;
+	position: absolute;
+
+	line-height: 32px;
+	background-color: lightgreen;
+	border: 1px solid green;
+	border-radius: 2px;
+	color:#fff;
+}
+.btn-nav,.btn-back{
+	top: 5px;
+	left: 8px;
+}
+.btn-next{
+	top:5px;right: 8px
+}
+
+header{
+  min-height: 49px;
+  width: 100%;
+
+  background-image: url(http://p7.qhimg.com/t017c6559389bf81e29.png);
+  background-size: 100% auto;
+  background-repeat: no-repeat; 
+
+}
+
+.rem16{font-size: 1.6rem;}
+.rem14{font-size: 1.4rem;}
+.rem24{font-size: 2.4rem;}
+
+.btn-icon{
+  padding: 0px 12px 0px 12px;
+  line-height: 32px;
+  background-color: lightgreen;
+  border: 1px solid green;
+  border-radius: 2px;
+  color:#fff;
+  display: inline-block;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+.btn-icon:active{
+  -webkit-transform: scale3d(0.9, 0.9, 1);
+}
+
+
+.football{
+  width: 70px;
+  height: 70px;
+  background: url('http://p9.qhimg.com/t01ae497863e742851f.png') no-repeat;
+  background-size: 70px auto;
+  position: relative;
+
+  -webkit-animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay:0s;
+  -webkit-animation-timing-function: ease;
+}
+@-webkit-keyframes loading{
+  from{left: 20px;-webkit-transform:rotate(0deg)}
+  to{left: 300px;-webkit-transform:rotate(360deg)}
+}
+
+.football1{
+  width: 70px;
+  height: 70px;
+  background: url('http://p9.qhimg.com/t01ae497863e742851f.png') no-repeat;
+  background-size: 70px auto;
+  -webkit-transform:translateX(0px) rotate(0deg);
+  
+}
+.football2{
+  -webkit-transform:translateX(300px) rotate(360deg);
+  -webkit-transition: -webkit-transform 1.5s ease;
+}
+
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<div class="content nav page">
+			<a href="#navBack" class="btn btn-back">返回</a>
+		</div>
+		<div class="content current page center">
+  			<div class="page1 wrap">
+  				<header>
+  					<a href="#nav" class="btn btn-nav">侧边栏</a>
+  					<a href="#page2" class="btn btn-next">下一页</a>
+  				</header>
+  				<section class="main">
+  					<div>
+                <h2>文字</h2>
+                <ul>
+                  <li class="rem14">14px大小的文字</li>
+                  <li class="rem16">16px大小的文字</li>
+                  <li class="rem24">24px大小的文字</li>
+                </ul>
+                <br />
+                <h2>按钮按下的状态</h2>
+                <p><a class="btn-icon" href="javascript:void(0);" ontouchstart="return true;">按钮</a></p>
+                <h2>动画</h2>
+                <a class="btn-icon btn-start">开始</a>
+              
+                <p class="football"></p>
+                <p class="football1"></p>
+            </div>
+            <p class="footer">底部</p>
+  				</section>
+  			</div>
+
+		</div>
+
+  		<div class="content page right100">
+    		<div class="page2 wrap">
+           		<a href="#page1" class="btn btn-back">上一页</a>
+    		</div>
+		</div>
+	</div>
+
+  <script src="zepto.min.js"></script>
+  <script src="fastclick.js"></script>
+  <script src="pageswitch.js"></script>
+	<script>
+     window.addEventListener('load', function () {
+      new FastClick(document.body);
+     }, false);
+
+    var slider = new PageSwitcher();
+    var navSlider = new NavSwitcher();
+   
+	 $(window).on('hashchange', function(){
+       	var hash = window.location.hash;
+       	if(hash === '#nav' || hash === '#navBack'){
+       		navSlider.switchNav('right30');//侧边栏
+       	}else{
+        	slider.switchPage();//页面
+        }
+    });
+  
+    navSlider.init({curPage : $('.current')});
+    slider.init({curPage : $('.current'),curHash:'#page1'});
+    
+
+    var aimnTime;
+
+    $('.btn-start').on('click',function(){
+        var aimnTime = setTimeout(function(){
+          if($('.football1').hasClass('football2')){
+            $('.football1').removeClass('football2');
+            $('.football').css('-webkit-animation-name','');
+          }else{
+            $('.football1').addClass('football2');
+            $('.football').css('-webkit-animation-name','loading');
+          }
+          setTimeout(arguments.callee,1500);
+        },1500);
+      });
+   
+</script>
+</body>
+</html>
