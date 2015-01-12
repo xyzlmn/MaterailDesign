@@ -2,6 +2,8 @@
 
 android设计规范——Material Design 
 
-
-     <p>CSDN：<a href="http://blog.csdn.net/xyz_lmn">xyz_lmn</a><p>
-     <p>微博：<a href="http://weibo.com/xyzlmn">@张兴业TBOW</a><p>
+  @author 张兴业
+  
+  http://blog.csdn.net/xyz_lmn
+  
+  我的新浪微博：[@张兴业TBOW](http://weibo.com/xyzlmn)
