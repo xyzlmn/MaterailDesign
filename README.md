@@ -7,3 +7,9 @@ android设计规范——Material Design
   http://blog.csdn.net/xyz_lmn
   
   我的新浪微博：[@张兴业TBOW](http://weibo.com/xyzlmn)
+  
+  
+![](https://raw.githubusercontent.com/xyzhang/MaterailDesign/master/pic/1.png)
+
+
+![](https://raw.githubusercontent.com/xyzhang/MaterailDesign/master/pic/2.png)
